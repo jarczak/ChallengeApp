@@ -1,4 +1,4 @@
-﻿class Employee
+﻿public class Employee
 {
     private List<int> Score { get; }
     private string Name { get; }
@@ -13,7 +13,7 @@
         Score = new List<int> ();
     }
 
-    private int Result { get
+    public int Result { get
         {
             return Score.Sum();
         } 
@@ -39,7 +39,12 @@
     }
     public void AddScore (int score)
     {
-        Score.Add (score);
+        if (score <= 10 && score >= -10)
+            { Score.Add(score); }
+        else
+        {
+            Console.WriteLine("Score is out of range -10 - 10!");
+        }
     }
 
 }
