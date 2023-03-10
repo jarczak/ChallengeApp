@@ -4,7 +4,7 @@ namespace ChallengeApp.Tests
     {
      
         [Test]
-        public void WhenSumOfScore_ShouldBeSumOfScore()
+        public void WhenSumOfScore_ShouldBeSumEqual()
         {
             var emp = new Employee("Rafa³", "Kraczaj", 30);
             emp.AddScore(10);
