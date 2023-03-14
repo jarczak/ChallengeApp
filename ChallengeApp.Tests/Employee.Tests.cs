@@ -4,17 +4,19 @@ namespace ChallengeApp.Tests
     {
      
         [Test]
-        public void WhenSumOfScore_ShouldBeSumEqual()
+        public void StatisticsTest()
         {
-            var emp = new Employee("Rafa³", "Kraczaj", 30);
-            emp.AddScore(10);
-            emp.AddScore(3);
-            emp.AddScore(-5);
+            var emp = new Employee("Rafa³", "Kraczaj");
+            emp.AddGrade(10);
+            emp.AddGrade(3);
+            emp.AddGrade(2.45f);
 
-            int result = emp.Result;
-            Assert.AreEqual(8, result);
+            var result = emp.GetStatistics();
 
-            
+
+            Assert.AreEqual(10, result.Max);
+            Assert.AreEqual(2.45f, result.Min);
+            Assert.AreEqual(5.15f, result.Average);
         }
     }
 }

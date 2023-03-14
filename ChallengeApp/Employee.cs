@@ -1,50 +1,36 @@
-﻿public class Employee
+﻿using ChallengeApp;
+
+public class Employee
 {
-    private List<int> Score { get; }
-    private string Name { get; }
-    private string Surname { get; }
-    private int Age { get; }
-
-    public Employee (string name, string surname, int age)
+    private List<float> grades = new List<float>();
+    public Employee(string name, string surname)
     {
-        Name = name;
-        Surname = surname;
-        Age = age;
-        Score = new List<int> ();
+        this.Name = name;
+        this.Surname = surname;
     }
+   public string Name { get; private set; }
+   public string Surname { get; private set; }
 
-    public int Result { get
-        {
-            return Score.Sum();
-        } 
-    }
-
-
-    public static void ShowScores (Employee emp1, Employee emp2, Employee emp3)
+    public void AddGrade (float grade)
     {
-        var emp1Scores = emp1.Result;
-        var emp2Scores = emp2.Result;
-        var emp3Scores = emp3.Result;
-
-        if (emp1Scores > emp2Scores || emp1Scores > emp2Scores)
-        {
-            Console.WriteLine(emp1.Name + emp1.Surname + emp1.Result);
-        }
-        else if (emp2Scores > emp3Scores || emp2Scores > emp1Scores)
-        {
-            Console.WriteLine(emp2.Name + emp2.Surname + emp2.Result);
-        }
-        else
-            Console.WriteLine(emp3.Name + emp3.Surname + emp3.Result);
+        grades.Add(grade);
     }
-    public void AddScore (int score)
+
+    public Statistics GetStatistics ()
     {
-        if (score <= 10 && score >= -10)
-            { Score.Add(score); }
-        else
+        var statistics = new Statistics();
+        statistics.Max = float.MinValue;
+        statistics.Min = float.MaxValue;
+        statistics.Average = 0;
+        foreach (var grade in grades)
         {
-            Console.WriteLine("Score is out of range -10 - 10!");
+            statistics.Max = Math.Max(statistics.Max, grade);
+            statistics.Min = Math.Min(statistics.Min, grade);
+            statistics.Average += grade;
         }
-    }
+        statistics.Average /= grades.Count;
 
+        return statistics;
+    }
+    
 }
