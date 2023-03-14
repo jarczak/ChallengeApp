@@ -1,4 +1,5 @@
 ﻿using ChallengeApp;
+using System.Diagnostics;
 
 public class Employee
 {
@@ -34,26 +35,6 @@ public class Employee
             Console.WriteLine("String is not float!");
         }
     }
-    public void AddGrade (int grade)
-    {
-        this.AddGrade((float)grade);
-    }
-    public void AddGrade (double grade)
-    {
-        this.AddGrade((float)grade);
-    }
-    public void AddGrade (byte grade)
-    {
-        this.AddGrade((float)grade);
-    }
-    public void AddGrade (long grade)
-    {
-        this.AddGrade((float)grade);
-    }
-    public void AddGrade (short grade)
-    {
-        this.AddGrade((float)grade);
-    }
 
     public Statistics GetStatistics ()
     {
@@ -71,5 +52,59 @@ public class Employee
 
         return statistics;
     }
-    
+    public Statistics GetStatisticsWithDoWhile ()
+    {
+        var statistics = new Statistics();
+        statistics.Max = float.MinValue;
+        statistics.Min = float.MaxValue;
+        statistics.Average = 0;
+        var index = 0;
+
+        do
+        {
+            statistics.Max = Math.Max(statistics.Max, grades[index]);
+            statistics.Min = Math.Min(statistics.Min, grades[index]);
+            statistics.Average += grades[index];
+        }
+        while (index < grades.Count);
+        statistics.Average /= grades.Count;
+
+        return statistics;
+    }
+    public Statistics GetStatisticsWithWhile()
+    {
+        var statistics = new Statistics();
+        statistics.Max = float.MinValue;
+        statistics.Min = float.MaxValue;
+        statistics.Average = 0;
+        var index = 0;
+
+        while (index < grades.Count);
+        {
+            statistics.Max = Math.Max(statistics.Max, grades[index]);
+            statistics.Min = Math.Min(statistics.Min, grades[index]);
+            statistics.Average += grades[index];
+        }
+        
+        statistics.Average /= grades.Count;
+
+        return statistics;
+    }
+    public Statistics GetStatisticsWithFor()
+    {
+        var statistics = new Statistics();
+        statistics.Max = float.MinValue;
+        statistics.Min = float.MaxValue;
+        statistics.Average = 0;
+        for (var i = 0; i < grades.Count; i++)
+        {
+            statistics.Max = Math.Max(statistics.Max, grades[i]);
+            statistics.Min = Math.Min(statistics.Min, grades[i]);
+            statistics.Average += grades[i];
+        }
+        statistics.Average /= grades.Count;
+
+        return statistics;
+    }
+
 }
