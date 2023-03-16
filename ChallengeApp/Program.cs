@@ -1,12 +1,22 @@
-﻿var employee = new Employee("Rafał", "Kraczaj");
-employee.AddGrade(2);
-employee.AddGrade(3);
-employee.AddGrade(7);
-employee.AddGrade(8.9f);
-employee.AddGrade("5");
-employee.AddGrade("567");
-employee.AddGrade("gnn");
-var stat = employee.GetStatistics();
-Console.WriteLine($"Max value is {stat.Max}");
-Console.WriteLine($"Min value is {stat.Min}");
-Console.WriteLine($"Average value is {stat.Average}");
+﻿Console.WriteLine("Witamy w programie XYZ do oceny pracownika!");
+Console.WriteLine("===========================================");
+Console.WriteLine();
+var emp = new Employee("Rafał", "Kraczaj");
+
+
+while (true)
+{
+    Console.WriteLine("Podaj ocenę pracownika: (podaj q aby zakończyć dodawanie)");
+    var input = Console.ReadLine();
+    if(input == "q" || input == "Q")
+    {
+        break;
+    }
+    emp.AddGrade(input);
+}
+var stat = emp.GetStatistics();
+Console.WriteLine($"Średnia ocen: {stat.Average}");
+Console.WriteLine($"Najniższa ocena: {stat.Min}");
+Console.WriteLine($"Najwyższa ocena: {stat.Max}");
+Console.WriteLine($"Ocena literowa: {stat.AverageLetter}");
+

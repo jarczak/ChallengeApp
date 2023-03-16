@@ -4,19 +4,26 @@ namespace ChallengeApp.Tests
     {
      
         [Test]
-        public void StatisticsTest()
+        public void IfLetterInputedThenAddGrade()
         {
             var emp = new Employee("Rafa³", "Kraczaj");
-            emp.AddGrade(10);
-            emp.AddGrade(3);
-            emp.AddGrade(2.45f);
+            
+            emp.AddGrade('c');
 
             var result = emp.GetStatistics();
 
+            Assert.AreEqual(40, result.Average);
+        }
+        [Test]
+        public void IfNumberInputedThenPrintLetter()
+        {
+            var emp = new Employee("Marian", "Kamiñski");
+            emp.AddGrade(80);
+            var result = emp.GetStatistics();
 
-            Assert.AreEqual(10, result.Max);
-            Assert.AreEqual(2.45f, result.Min);
-            Assert.AreEqual(5.15f, result.Average);
+            Assert.AreEqual('A', result.AverageLetter);
         }
     }
+
+       
 }

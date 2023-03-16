@@ -1,4 +1,5 @@
 ﻿using ChallengeApp;
+using System.ComponentModel.Design;
 using System.Diagnostics;
 
 public class Employee
@@ -35,6 +36,32 @@ public class Employee
             Console.WriteLine("String is not float!");
         }
     }
+    public void AddGrade (char grade)
+    {
+        switch (grade)
+        {
+            case 'A':
+            case 'a':
+                this.grades.Add(80);
+                break;
+            case 'B':
+            case 'b':
+                this.grades.Add(60);
+                break;
+            case 'C':
+            case 'c':
+                this.grades.Add(40);
+                break;
+            case 'D':
+            case 'd':
+                this.grades.Add(20);
+                break;
+            default:
+                Console.WriteLine("Wrong letter!");
+                break;
+        }
+
+    }
 
     public Statistics GetStatistics ()
     {
@@ -50,59 +77,24 @@ public class Employee
         }
         statistics.Average /= grades.Count;
 
-        return statistics;
-    }
-    public Statistics GetStatisticsWithDoWhile ()
-    {
-        var statistics = new Statistics();
-        statistics.Max = float.MinValue;
-        statistics.Min = float.MaxValue;
-        statistics.Average = 0;
-        var index = 0;
-
-        do
+        switch (statistics.Average)
         {
-            statistics.Max = Math.Max(statistics.Max, grades[index]);
-            statistics.Min = Math.Min(statistics.Min, grades[index]);
-            statistics.Average += grades[index];
+            case var average when average >= 80:
+                 statistics.AverageLetter = 'A';
+                break;
+            case var average when average >= 60:
+                 statistics.AverageLetter = 'B';
+                break;
+            case var average when average >= 40:
+                statistics.AverageLetter = 'C';
+                break;
+            case var average when average >= 20:
+                statistics.AverageLetter = 'D';
+                break;
+            default:
+                statistics.AverageLetter = 'E';
+                break;
         }
-        while (index < grades.Count);
-        statistics.Average /= grades.Count;
-
-        return statistics;
-    }
-    public Statistics GetStatisticsWithWhile()
-    {
-        var statistics = new Statistics();
-        statistics.Max = float.MinValue;
-        statistics.Min = float.MaxValue;
-        statistics.Average = 0;
-        var index = 0;
-
-        while (index < grades.Count);
-        {
-            statistics.Max = Math.Max(statistics.Max, grades[index]);
-            statistics.Min = Math.Min(statistics.Min, grades[index]);
-            statistics.Average += grades[index];
-        }
-        
-        statistics.Average /= grades.Count;
-
-        return statistics;
-    }
-    public Statistics GetStatisticsWithFor()
-    {
-        var statistics = new Statistics();
-        statistics.Max = float.MinValue;
-        statistics.Min = float.MaxValue;
-        statistics.Average = 0;
-        for (var i = 0; i < grades.Count; i++)
-        {
-            statistics.Max = Math.Max(statistics.Max, grades[i]);
-            statistics.Min = Math.Min(statistics.Min, grades[i]);
-            statistics.Average += grades[i];
-        }
-        statistics.Average /= grades.Count;
 
         return statistics;
     }
