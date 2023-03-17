@@ -12,7 +12,14 @@ while (true)
     {
         break;
     }
-    emp.AddGrade(input);
+    try
+    {
+        emp.AddGrade(input);
+    }
+    catch(Exception e) 
+    {
+        Console.WriteLine($"An exception occured: {e}");
+    }
 }
 var stat = emp.GetStatistics();
 Console.WriteLine($"Średnia ocen: {stat.Average}");
