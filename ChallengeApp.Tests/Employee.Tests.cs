@@ -6,7 +6,7 @@ namespace ChallengeApp.Tests
         [Test]
         public void IfLetterInputedThenAddGrade()
         {
-            var emp = new Employee("Rafa³", "Kraczaj");
+            var emp = new Employee("Rafa³", "Kraczaj", "M");
             
             emp.AddGrade('c');
 
@@ -17,7 +17,7 @@ namespace ChallengeApp.Tests
         [Test]
         public void IfNumberInputedThenPrintLetter()
         {
-            var emp = new Employee("Marian", "Kamiñski");
+            var emp = new Employee("Marian", "Kamiñski", "M");
             emp.AddGrade(80);
             var result = emp.GetStatistics();
 

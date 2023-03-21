@@ -1,7 +1,7 @@
 ﻿Console.WriteLine("Witamy w programie XYZ do oceny pracownika!");
 Console.WriteLine("===========================================");
 Console.WriteLine();
-var emp = new Employee("Rafał", "Kraczaj");
+var emp = new Employee("Rafał", "Kraczaj", "M");
 
 
 while (true)
@@ -22,6 +22,7 @@ while (true)
     }
 }
 var stat = emp.GetStatistics();
+Console.WriteLine($"Statystyki dla pracownika: {emp.Name}, {emp.Surname}");
 Console.WriteLine($"Średnia ocen: {stat.Average}");
 Console.WriteLine($"Najniższa ocena: {stat.Min}");
 Console.WriteLine($"Najwyższa ocena: {stat.Max}");
