@@ -1,4 +1,6 @@
-﻿namespace ChallengeApp
+﻿using static ChallengeApp.EmployeeBase;
+
+namespace ChallengeApp
 {
     public interface IEmployee
     {
@@ -7,7 +9,9 @@
         public void AddGrade(float grade);
         public void AddGrade(string grade);
         public void AddGrade(char grade);
+        event GradeAddedDelegate GradeAdded;
         public Statistics GetStatistics();
+        
 
     }
 }

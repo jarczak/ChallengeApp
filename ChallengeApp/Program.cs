@@ -15,7 +15,7 @@ void EmployeeGradeAdded(object sender, EventArgs args)
     Console.WriteLine("Dodano nową ocenę");
 }
 
-/*while (true)
+while (true)
 {
     Console.WriteLine("Podaj ocenę pracownika: (podaj q aby zakończyć dodawanie)");
     var input = Console.ReadLine();
@@ -31,7 +31,7 @@ void EmployeeGradeAdded(object sender, EventArgs args)
     {
         Console.WriteLine($"An exception occured: {e}");
     }
-}*/
+}
 var stat = emp.GetStatistics();
 Console.WriteLine($"Statystyki dla pracownika: {emp.Name}, {emp.Surname}");
 Console.WriteLine($"Średnia ocen: {stat.Average}");
