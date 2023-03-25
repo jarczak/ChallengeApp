@@ -3,12 +3,17 @@
 Console.WriteLine("Witamy w programie XYZ do oceny pracownika!");
 Console.WriteLine("===========================================");
 Console.WriteLine();
-var emp = new EmployeeInFile("Rafał", "Kraczaj");
+var emp = new EmployeeInMemory("Rafał", "Kraczaj");
 emp.AddGrade(3.6f);
 emp.AddGrade('D');
 emp.AddGrade(34);
 emp.AddGrade(10f);
+emp.GradeAdded += EmployeeGradeAdded;
 
+void EmployeeGradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("Dodano nową ocenę");
+}
 
 /*while (true)
 {

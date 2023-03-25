@@ -2,10 +2,14 @@
 {
     public abstract class EmployeeBase : IEmployee
     {
+        public delegate void GradeAddedDelegate(object sender, EventArgs args);
+        public event GradeAddedDelegate GradeAdded;
         public EmployeeBase(string name, string surname) 
         { 
             this.Name = name;
             this.Surname = surname;
+            
+
         }
         public string Name {get; set;}
 
@@ -20,3 +24,4 @@
         public abstract Statistics GetStatistics();
     }
 }
+
